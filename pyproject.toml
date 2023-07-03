@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "test-entropie"
+version = "0.1.0"
+description = ""
+authors = ["CedrickArmel <cedrick-armel-yao@outlook.fr>"]
+readme = "README.md"
+packages = [{include = "test_entropie"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "^2.0.2"
+faker = "^18.11.2"
+scikit-learn = "^1.2.2"
+openpyxl = "^3.1.2"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
