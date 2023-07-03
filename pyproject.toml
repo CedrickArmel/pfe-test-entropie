@@ -3,8 +3,6 @@ name = "my-app"
 version = "0.1.0"
 description = "My application"
 license = "BSD 3-Clause License"
-name = "test-entropie"
-version = "0.1.0"
 authors = ["CedrickArmel <cedrick-armel-yao@outlook.fr>"]
 readme = "README.md"
 packages = [{include = "test_entropie"}]
