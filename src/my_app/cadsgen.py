@@ -1,10 +1,10 @@
 from datetime import timedelta
-import requests
 import random
 import json
 from faker import Faker
 
 fake = Faker()
+
 
 def generate_payload_agri_farm():
     points = [f"{round(random.uniform(0, 101), 2)},{round(random.uniform(0, 1), 2)}" for _ in range(4)]
@@ -25,7 +25,7 @@ def generate_payload_agri_farm():
         "date_modified": fake.date_time_this_year().isoformat(),
         "description": fake.sentence(),
         "related_source": ','.join([f"urn:ngsi-ld:AgriApp:{fake.uuid4()}" for _ in range(2)]),
-        "see_also": f"https://example.org/concept/farm,https://datamodel.org/example/farm,https://datamodel.org/example/field",
+        "see_also": "https://example.org/concept/farm,https://datamodel.org/example/farm,https://datamodel.org/example/field",
         "land_location": ';'.join(points),
         "land_location_type": "Polygon",
         "owned_by": f"urn:ngsi-ld:Person:{fake.uuid4()}"
@@ -133,6 +133,7 @@ def generate_payload_agri_parcel_operation():
         "gasoline_fuel_consumption_unit_text": "liters"
     }
 
+
 def generate_payload_agri_parcel_record():
     points = [f"{round(random.uniform(0, 101), 2)},{round(random.uniform(0, 1), 2)}" for _ in range(4)]
     points.append(points[0])
@@ -184,6 +185,7 @@ def generate_payload_agri_parcel_record():
         "timestamp": fake.date_time_this_year().isoformat(),
     }
 
+
 def generate_payload_agri_soil():
     return {
         "date_created": fake.date_time_this_decade().isoformat(),
@@ -220,9 +222,10 @@ def generate_payload_agri_soil_state():
         "has_agri_greenhouse": f"urn:ngsi-ld:AgriGreenhouse:{fake.uuid4()}",
     }
 
+
 def generate_payload_agri_yield():
     start_date = fake.date_time_this_year()
-    end_date = start_date + timedelta(days=random.randint(30,120))  # A random end date 30 to 120 days after the start
+    end_date = start_date + timedelta(days=random.randint(30, 120))  # A random end date 30 to 120 days after the start
     yield_value = round(random.uniform(20, 100), 2)
     yield_min_value = round(yield_value - random.uniform(0, 10), 2)
     yield_max_value = round(yield_value + random.uniform(0, 10), 2)
@@ -241,7 +244,7 @@ def generate_payload_agri_yield():
 
 def generate_payload_agri_carbon_footprint():
     estimation_start = fake.date_time_this_year()
-    estimation_end = estimation_start + timedelta(days=random.randint(30,120))  # A random end date 30 to 120 days after the start
+    estimation_end = estimation_start + timedelta(days=random.randint(30, 120))  # A random end date 30 to 120 days after the start
     carbon_footprint_value = round(random.uniform(1, 20), 2)
     carbon_footprint_accuracy_percent = round(random.uniform(1, 20), 2)
     carbon_footprint_min_value = round(carbon_footprint_value - random.uniform(0, 5), 2)
