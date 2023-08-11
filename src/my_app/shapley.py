@@ -48,17 +48,17 @@ def sampling_kg(df: pd.DataFrame, players: dict, k: int, id_columns: list = None
     for _ in range(k):
         coalition = np.random.choice(ply, size=np.random.randint(2, m + 1), replace=False)
         features = []
-        for player in coalition :
+        for player in coalition:
             features += players[player]
-        coalition_av = shannon_entropy_kde(dataset[features].values)  # av=accuracy value
+        coalition_av = shannon_entropy_kde(dataset[features].values)*1000  # av=accuracy value
 
-        for player in coalition :
+        for player in coalition:
             coalition_without_player = [p for p in coalition if p != player]
             features_wh_player = []
-            for player in coalition_without_player :
+            for player in coalition_without_player:
                 features_wh_player += players[player]
             dataset_ft_wp_val = dataset[features_wh_player].values
-            coalition_wp_av = shannon_entropy_kde(dataset_ft_wp_val)  # wp=without player
+            coalition_wp_av = shannon_entropy_kde(dataset_ft_wp_val)*1000  # wp=without player
             contribution = coalition_av - coalition_wp_av
 
             shapley_value[player] += contribution / k
